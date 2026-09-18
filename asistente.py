@@ -21,6 +21,10 @@ class Asistente:
                 return respuesta
         return 'No entendí tu pregunta.'
 
+    def mostrar_historial(self):
+        for quien, texto in self.historial:
+            print(f'{quien}: {texto}')
+
     def calcular_presupuesto(self):
         servicio = input('¿Qué servicio le interesa? ').strip().lower()
         if servicio not in self.precios_servicios:
