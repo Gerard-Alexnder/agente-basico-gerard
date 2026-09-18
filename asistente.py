@@ -40,6 +40,14 @@ class Asistente:
         texto = mensaje.strip()
         texto_normalizado = texto.lower()
 
+        if any(palabra in texto_normalizado for palabra in ('adios', 'salir', 'chao')):
+            if self.nombre_usuario:
+                respuesta = f"¡Hasta luego {self.nombre_usuario}! Gracias por visitar {self.nombre_negocio}."
+            else:
+                respuesta = f"¡Hasta luego! Gracias por visitar {self.nombre_negocio}."
+            self.historial.append({"asistente": respuesta})
+            return respuesta
+
         if texto_normalizado.startswith('me llamo'):
             nombre = texto[8:].strip()
             if nombre:
